@@ -10,12 +10,19 @@ call vundle#begin()
 " Plugin that haven't been added:
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'mhinz/vim-startify'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'mhartington/oceanic-next'
 Plugin 'morhetz/gruvbox'
-" Plugin 'ryanoasis/vim-devicons'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+" Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Plugin 'joshdick/onedark.vim'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'jwalton512/vim-blade'
 Plugin 'lifepillar/vim-solarized8'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'leafOfTree/vim-vue-plugin'
 Plugin 'junegunn/goyo.vim'
@@ -30,6 +37,7 @@ Plugin 'othree/yajs.vim'
 Plugin 'tomasr/molokai'
 Plugin 'mxw/vim-jsx'
 Plugin 'prettier/vim-prettier', { 'do': 'npm install' }
+Plugin 'mhinz/vim-signify'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -76,10 +84,13 @@ endif
 
 set t_Co=256
 set background=dark
-colorscheme gruvbox
+" colorscheme synthwave84
 " colorscheme solarized8
 " colorscheme tender
 " colorscheme gruvbox
+colorscheme OceanicNext
+" colorscheme PaperColor
+" colorscheme desert-night
 " autocmd vimcenter * hi Normal guibg=NONE ctermbg=None
 
 "transparent
@@ -156,7 +167,7 @@ set splitright
  autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
  autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
- set runtimepath^=~/.vim/bundle/ctrlp.vim
+ " set runtimepath^=~/.vim/bundle/ctrlp.vim
  let g:prettier#autoformat = 0
 
 let g:polyglot_disabled = ['css']
@@ -299,8 +310,8 @@ let g:prettier#config#tab_width = 2
 
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 set ts=2 sw=2 noet
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 0
+let g:indent_guides_guide_size = 0
 " set laststatus=0
 " set nonumber
 " set signcolumn=yes
@@ -470,5 +481,43 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+nnoremap <silent> <C-p> :Files<CR>
+
+
+
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+let NERDTreeShowHidden=1
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+
+set updatetime=100
+
+
+set guifont=hack_nerd_font:h21
+let g:startify_custom_header = [
+\ '  _______ ___  ___   ______  ___  ___ ',
+\ '  |  ___| | |  | |  / _____| | | / /  ',
+\ '  | |___  | |  | | / /       | |/ /   ',
+\ '  | ____| | |  | | | |       |   /    ',
+\ '  | |     | |__| | \ \_____  | |\ \   ',
+\ '  |_|     \______/  \______| |_| \_\  ',
+\ '',
+\ '',
+\ ]
+
+
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
+
+
+let g:fzf_preview_window = ['right,50%', 'ctrl-/']
+
+set autoread
+
+" autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
+nnoremap <silent> <S-r> :normal R<CR>
+
+set foldmethod=manual
+
+
