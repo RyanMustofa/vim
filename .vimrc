@@ -21,6 +21,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'jwalton512/vim-blade'
 Plugin 'lifepillar/vim-solarized8'
+Plugin 'cormacrelf/vim-colors-github'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'terryma/vim-multiple-cursors'
@@ -78,9 +79,9 @@ filetype plugin indent on    " required:q
 "
 " set shiftwidth=2
 
-if (has("termguicolors"))
- set termguicolors
-endif
+" if (has("termguicolors"))
+"  set termguicolors
+" endif
 
 set t_Co=256
 set background=dark
@@ -89,56 +90,62 @@ set background=dark
 " colorscheme tender
 " colorscheme gruvbox
 colorscheme OceanicNext
+" colorscheme github
 " colorscheme PaperColor
 " colorscheme desert-night
 " autocmd vimcenter * hi Normal guibg=NONE ctermbg=None
+
 
 "transparent
 
 
 "for transparent background
 
-" function! AdaptColorscheme()
-"    highlight clear CursorLine
-"    highlight Normal ctermbg=none
-"    highlight LineNr ctermbg=none
-"    highlight Folded ctermbg=none
-"    highlight NonText ctermbg=none
-"    highlight SpecialKey ctermbg=none
-"    highlight VertSplit ctermbg=none
-"    highlight SignColumn ctermbg=none
-" endfunction
-" autocmd ColorScheme * call AdaptColorscheme()
-"
-" highlight Normal guibg=NONE ctermbg=NONE
-" highlight CursorColumn cterm=NONE ctermbg=NONE ctermfg=NONE
-" highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE
-" highlight CursorLineNr cterm=NONE ctermbg=NONE ctermfg=NONE
-" highlight clear LineNr
-" highlight clear SignColumn
-" highlight clear StatusLine
-"
-"
-" autocmd InsertEnter * set nocursorline
-"
-" autocmd InsertLeave * set nocursorline
+function! AdaptColorscheme()
+   highlight clear CursorLine
+   highlight Normal ctermbg=none
+   highlight LineNr ctermbg=none
+   highlight Folded ctermbg=none
+   highlight NonText ctermbg=none
+   highlight SpecialKey ctermbg=none
+   highlight VertSplit ctermbg=none
+   highlight SignColumn ctermbg=none
+endfunction
+autocmd ColorScheme * call AdaptColorscheme()
 
-"" extra settings, uncomment them if necessary :) 
-"set cursorline
-"set noshowmode
-"set nocursorline
+highlight Normal guibg=NONE ctermbg=NONE
+highlight CursorColumn cterm=NONE ctermbg=NONE ctermfg=NONE
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE
+highlight CursorLineNr cterm=NONE ctermbg=NONE ctermfg=NONE
+highlight clear LineNr
+highlight clear SignColumn
+highlight clear StatusLine
+
+
+autocmd InsertEnter * set nocursorline
+
+autocmd InsertLeave * set nocursorline
+
+" extra settings, uncomment them if necessary :)
+set cursorline
+set noshowmode
+set nocursorline
 
 " trasparent end
 
 
 "Nerdtree configuration
+map <Leader>t :tabnew<CR>
+map <Leader>w :tabclose<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-o> :Prettier<CR>
+map <C-t> :vert term<CR>
 
-
+"let g:airline_theme = "github"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let NERDTreeMapOpenInTab='t'
 
 set encoding=utf8
 " set encoding=utf-8
@@ -152,7 +159,9 @@ set incsearch
 set ignorecase
 set expandtab
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
+set textwidth=50
 set autoindent
 set smartindent
 set splitbelow
@@ -519,5 +528,8 @@ set autoread
 nnoremap <silent> <S-r> :normal R<CR>
 
 set foldmethod=manual
+
+set ttyfast
+set lazyredraw
 
 
